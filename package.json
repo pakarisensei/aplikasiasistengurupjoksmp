@@ -1,0 +1,8 @@
+{
+  "name": "asisten-pjok-proxy-server",
+  "version": "1.0.0",
+  "description": "Serverless function for PJOK assistant",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

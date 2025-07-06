@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 /**
  * FUNGSI INI BERJALAN DI SERVER NETLIFY (BUKAN DI BROWSER)
  * Tujuannya adalah untuk:
@@ -72,14 +74,3 @@ exports.handler = async function(event, context) {
         };
     }
 };
-
-</details>
-
-Pemeriksaan Akhir:
-Struktur folder Anda sekarang harus sama persis seperti ini:
-
-proyek-asisten-pjok/
-├── netlify/
-│   └── functions/
-│       └── gemini-proxy.js
-└── index.html
