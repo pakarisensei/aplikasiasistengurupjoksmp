@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asisten Digital Guru PJOK (Versi 4: Logika Kontekstual)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-sky-50 text-gray-800">
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 p-8 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg no-print">
+            <h1 class="text-4xl md:text-5xl font-extrabold">Asisten Digital Guru PJOK SD/MI/Sederajat</h1>
+            <p class="text-indigo-200 mt-3 text-lg">Merancang Modul Ajar, Kuis, & Ide Coding PJOK jenjang SD/MI/Sederajat dengan cepat dan efisien.</p>
+        </header>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 no-print">
+                <form id="settingsForm" class="space-y-6 sticky top-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-4 border-b pb-2 text-sky-700">Informasi Dasar</h3>
+                        <div class="space-y-4">
+                            <div><label for="nama-penyusun" class="block text-sm font-medium text-gray-700">Nama Guru</label><input type="text" id="nama-penyusun" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" value="Nama Guru PJOK, S.Pd."></div>
+                            <div><label for="guru-nip" class="block text-sm font-medium text-gray-700">NIP Guru</label><input type="text" id="guru-nip" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" value="198XXXXX XXXXXX X XXX"></div>
+                            <div><label for="kepsek-nama" class="block text-sm font-medium text-gray-700">Nama Kepala Sekolah</label><input type="text" id="kepsek-nama" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" value="Nama Kepala Sekolah, M.Pd."></div>
+                            <div><label for="kepsek-nip" class="block text-sm font-medium text-gray-700">NIP Kepala Sekolah</label><input type="text" id="kepsek-nip" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" value="197XXXXX XXXXXX X XXX"></div>
+                            <div><label for="institusi" class="block text-sm font-medium text-gray-700">Institusi</label><input type="text" id="institusi" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" value="Nama Sekolah Dasar"></div>
+                            <div><label for="lokasi-ttd" class="block text-sm font-medium text-gray-700">Tempat Tanda Tangan</label><input type="text" id="lokasi-ttd" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" value="Makassar"></div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-4 border-b pb-2 text-sky-700">Pengaturan Modul PJOK</h3>
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label for="fase" class="block text-sm font-medium text-gray-700">Fase</label><select id="fase" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"><option value="A" selected>A</option><option value="B">B</option><option value="C">C</option></select></div>
+                                <div><label for="kelas" class="block text-sm font-medium text-gray-700">Kelas</label><select id="kelas" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"></select></div>
+                            </div>
+                            <div><label for="semester" class="block text-sm font-medium text-gray-700">Semester</label><select id="semester" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"><option value="Ganjil" selected>Ganjil</option><option value="Genap">Genap</option></select></div>
+                            <div><label for="elemen-cp" class="block text-sm font-medium text-gray-700">Elemen CP</label><select id="elemen-cp" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"></select></div>
+                            <div><label for="materi-pembelajaran" class="block text-sm font-medium text-gray-700">Materi Pembelajaran</label><select id="materi-pembelajaran" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"></select></div>
+                            <div><label for="materi-spesifik" class="block text-sm font-medium text-gray-700">Materi Spesifik</label><input type="text" id="materi-spesifik" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" placeholder="Contoh: Berjalan dan Berlari"></div>
+                            <div><label for="model-pembelajaran" class="block text-sm font-medium text-gray-700">Model Pembelajaran</label><select id="model-pembelajaran" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"></select></div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label for="jumlah-pertemuan" class="block text-sm font-medium text-gray-700">Jml. Pertemuan</label><input type="number" id="jumlah-pertemuan" value="2" min="1" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"></div>
+                                <div><label for="jp-per-pertemuan" class="block text-sm font-medium text-gray-700">JP / Pertemuan</label><input type="number" id="jp-per-pertemuan" value="2" min="1" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"></div>
+                            </div>
+                            <div><label for="menit-per-jp" class="block text-sm font-medium text-gray-700">Menit per JP</label><input type="number" id="menit-per-jp" value="35" min="1" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500"></div>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-sky-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 flex items-center justify-center transition-all duration-200"><i data-lucide="book-open" class="mr-2"></i>Buat Modul Ajar</button>
+                    <div id="loader" class="hidden text-center mt-4"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-600 mx-auto"></div><p class="mt-2 text-gray-600">Asisten sedang merancang...</p></div>
+                </form>
+            </div>
+            <div class="lg:col-span-8">
+                <div id="outputContainer" class="bg-white p-2 sm:p-4 rounded-xl shadow-lg min-h-screen">
+                    <div id="placeholder" class="flex items-center justify-center h-full">
+                        <div class="text-center text-gray-400"><i data-lucide="file-text" class="mx-auto h-16 w-16 text-gray-300"></i><h3 class="mt-2 text-lg font-medium">Modul Ajar PJOK Anda Akan Tampil di Sini</h3><p class="mt-1 text-sm">Lengkapi formulir, dan biarkan Asisten merancang pengalaman belajar.</p></div>
+                    </div>
+                    <div id="modulContent" class="prose max-w-none"></div>
+                    <div id="action-buttons-wrapper" class="hidden no-print">
+                        <div class="flex flex-wrap gap-2 my-6 border-t pt-6">
+                            <button id="copy-btn" class="flex items-center bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 text-sm"><i data-lucide="copy" class="mr-2 h-4 w-4"></i>Salin</button>
+                            <button id="back-btn" class="flex items-center bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 text-sm"><i data-lucide="arrow-left" class="mr-2 h-4 w-4"></i>Buat Baru</button>
+                        </div>
+                        <div id="gemini-features" class="mt-4 pt-6 border-t-2 border-dashed border-gray-300">
+                            <h3 class="text-xl font-bold text-sky-800 text-center mb-2">Perkaya Modul dengan Fitur Canggih</h3>
+                            <p class="text-center text-gray-600 mb-6">Gunakan tombol di bawah untuk meminta Asisten Guru membuat konten tambahan.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <button id="gemini-warmup-btn" class="bg-teal-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-600 flex items-center justify-center"><span class="mr-2 text-xl">🔥</span>Ide Pemanasan</button>
+                                <button id="gemini-materi-btn" class="bg-amber-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-amber-600 flex items-center justify-center"><span class="mr-2 text-xl">📚</span>Materi Ajar Mendalam</button>
+                                <button id="gemini-quiz-btn" class="bg-blue-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-600 flex items-center justify-center"><span class="mr-2 text-xl">🧩</span>Kuis Interaktif</button>
+                                <button id="gemini-coding-btn" class="bg-gray-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-gray-800 flex items-center justify-center"><span class="mr-2 text-xl">🤖</span>Ide Coding PJOK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="gemini-modal" class="fixed inset-0 bg-gray-900 bg-opacity-60 flex items-center justify-center p-4 z-50 hidden no-print">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl transform transition-all max-h-[90vh] flex flex-col">
+            <div class="p-5 border-b border-gray-200 flex justify-between items-center">
+                <h2 id="gemini-modal-title" class="text-xl font-bold text-gray-800">Bantuan Asisten Guru</h2>
+                <button id="gemini-modal-close" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="h-6 w-6"></i></button>
+            </div>
+            <div id="gemini-modal-content" class="p-6 overflow-y-auto prose max-w-none"></div>
+            <div class="p-4 bg-gray-50 border-t border-gray-200 rounded-b-2xl"><button id="gemini-modal-copy" class="w-full bg-sky-600 text-white font-bold py-2.5 px-4 rounded-lg hover:bg-sky-700 flex items-center justify-center">Salin Teks</button></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
