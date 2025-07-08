@@ -1,8 +1,14 @@
 {
-  "name": "asisten-pjok-proxy-server",
+  "name": "asisten-pjok-netlify",
   "version": "1.0.0",
-  "description": "Serverless function for PJOK assistant",
+  "description": "Proxy function untuk Asisten Digital Guru PJOK",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.6.1"
   }
 }

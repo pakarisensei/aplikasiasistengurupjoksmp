@@ -1,0 +1,119 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f9ff; /* sky-50 */
+}
+.prose { 
+    max-width: 100%; 
+    font-family: 'Poppins', sans-serif; 
+}
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5 { 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 700; 
+    margin-bottom: 0.75rem; 
+}
+.prose p, .prose ul, .prose ol { 
+    margin-top: 0; 
+    margin-bottom: 1rem; 
+}
+.prose .main-title { 
+    text-align:center; 
+    font-size:1.8em; 
+    margin-bottom:0.25rem; 
+}
+.prose .subtitle { 
+    text-align:center; 
+    font-size:1.4em; 
+    margin-top:0; 
+    font-weight:600; 
+}
+.prose .main-divider { 
+    border-top:1px solid black; 
+    margin:1.5rem 0; 
+}
+.prose .section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    padding: 0.5rem 1rem;
+    background-color: #ecfdf5; /* emerald-100 */
+    color: #065f46; /* emerald-800 */
+    border-left: 5px solid #047857; /* emerald-700 */
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+.prose .subsection-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #333;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.info-box { 
+    background-color: #e0f2fe; 
+    border-left: 4px solid #0369a1; 
+    padding: 1rem; 
+    margin-top: 1rem; 
+    border-radius: 0.5rem; 
+}
+.lampiran-box { 
+    border: 1px solid #e5e7eb; 
+    padding: 1.25rem; 
+    border-radius: 8px; 
+    margin-top: 1rem; 
+    background-color: #fafafa; 
+}
+
+.prose table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 1em; 
+}
+.prose th, .prose td { 
+    border: 1px solid #d1d5db; 
+    padding: 0.75rem; 
+    text-align: left; 
+}
+.prose th { 
+    background-color: #f9fafb; 
+    font-weight: 600; 
+}
+.prose .info-table td:first-child { 
+    font-weight: 600; 
+    background-color: #f9fafb; 
+    width: 30%; 
+}
+
+#gemini-modal-content h1, #gemini-modal-content h2, #gemini-modal-content h3 { 
+    font-weight: bold; 
+    margin-top: 1.25rem; 
+    margin-bottom: 0.5rem; 
+}
+#gemini-modal-content h1 { font-size: 1.5rem; } 
+#gemini-modal-content h2 { font-size: 1.35rem; } 
+#gemini-modal-content h3 { font-size: 1.2rem; }
+#gemini-modal-content p { 
+    margin-top: 0; 
+    margin-bottom: 1rem; 
+    line-height: 1.6; 
+}
+#gemini-modal-content ul, #gemini-modal-content ol { 
+    list-style-position: outside; 
+    padding-left: 1.5rem; 
+    margin-top: 1rem; 
+    margin-bottom: 1rem; 
+}
+#gemini-modal-content li { 
+    margin-bottom: 0.5rem; 
+}
+#gemini-modal-content strong { font-weight: 700; } 
+#gemini-modal-content em { font-style: italic; }
+#gemini-modal-content a { 
+    color: #0e7490; 
+    text-decoration: underline; 
+}
+
+.no-print { display: block; }
+@media print { 
+    .no-print { display: none; } 
+}

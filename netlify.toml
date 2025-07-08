@@ -1,3 +1,15 @@
+# Konfigurasi dasar untuk build
 [build]
-  command = "npm install"
+  # Direktori tempat file-file fungsi serverless Anda berada
   functions = "netlify/functions"
+  # Direktori yang akan di-publish (root folder karena ini situs statis)
+  publish = "/"
+
+# Aturan redirect untuk membuat URL API lebih bersih
+[[redirects]]
+  # URL yang akan digunakan di frontend (index.html)
+  from = "/api/*"
+  # URL fungsi serverless yang sebenarnya
+  to = "/.netlify/functions/:splat"
+  # Kode status 200 berarti ini adalah rewrite (URL tidak berubah di browser)
+  status = 200
