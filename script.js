@@ -415,20 +415,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- FUNGSI-FUNGSI BANTUAN AI (GEMINI) ---
-    async function callGemini(prompt) {
-        // UPDATE: Panggil Netlify function sebagai proxy, bukan Google API langsung
+    async function callGemini(prompt, retries = 3) {
         const proxyUrl = '/api/gemini-proxy';
         const payload = { contents: [{ parts: [{ text: prompt }] }] };
+
         try {
             const response = await fetch(proxyUrl, { 
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' }, 
                 body: JSON.stringify(payload) 
             });
+
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.error.message || `API Error: ${response.status}`);
+                const errorMessage = errorData.error?.message || `API Error: ${response.status}`;
+                
+                // Periksa error spesifik "overloaded" dan coba lagi jika memungkinkan
+                if (response.status === 429 || errorMessage.includes("overloaded") || errorMessage.includes("model is overloaded")) {
+                    if (retries > 0) {
+                        console.warn(`Model overloaded. Retrying... (${retries} retries left)`);
+                        await new Promise(res => setTimeout(res, 1500)); // Tunggu 1.5 detik sebelum mencoba lagi
+                        return callGemini(prompt, retries - 1);
+                    } else {
+                         throw new Error("Model AI sedang sibuk. Mohon coba beberapa saat lagi.");
+                    }
+                }
+                throw new Error(errorMessage);
             }
+
             const result = await response.json();
             if (result.candidates && result.candidates[0]?.content?.parts[0]?.text) {
                 return result.candidates[0].content.parts[0].text;
@@ -439,7 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error("Respons API tidak valid atau kosong.");
         } catch (error) {
             console.error("callGemini Error:", error);
-            return `Terjadi kesalahan saat menghubungi proxy: ${error.message}. Pastikan fungsi Netlify sudah di-deploy dan API Key sudah diatur.`;
+            // Memberikan pesan yang lebih ramah pengguna
+            return `Terjadi kesalahan: ${error.message}. Pastikan fungsi Netlify sudah di-deploy dan API Key sudah diatur dengan benar.`;
         }
     }
 
