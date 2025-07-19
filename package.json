@@ -1,14 +1,13 @@
 {
-  "name": "asisten-pjok-netlify",
+  "name": "asisten-pjok-smp",
   "version": "1.0.0",
-  "description": "Proxy function untuk Asisten Digital Guru PJOK",
-  "main": "index.html",
+  "description": "Aplikasi Asisten Digital untuk Guru PJOK SMP/MTs.",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Guru PJOK",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.1"
   }
 }

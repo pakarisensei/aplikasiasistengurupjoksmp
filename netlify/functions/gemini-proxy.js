@@ -1,46 +1,54 @@
-// Mengimpor 'node-fetch' untuk melakukan permintaan HTTP di lingkungan Node.js
-const fetch = require('node-fetch');
+// Fungsi ini bertindak sebagai perantara (proxy) yang aman ke Google Gemini API.
+// Tujuannya adalah untuk menyembunyikan API Key Anda dari sisi klien (browser).
 
-// Handler utama untuk Netlify Function
-exports.handler = async (event, context) => {
+exports.handler = async function(event, context) {
   // Hanya izinkan metode POST
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Method Not Allowed' }),
+    };
   }
 
-  // Mengambil kunci API dari environment variables di Netlify
+  // Ambil API Key dari environment variables di Netlify.
+  // Ini adalah cara yang aman untuk menyimpan kunci rahasia.
   const apiKey = process.env.GEMINI_API_KEY;
+
   if (!apiKey) {
-    return { statusCode: 500, body: JSON.stringify({ error: { message: "API key tidak diatur di server." } }) };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'API Key tidak diatur di server.' }),
+    };
   }
 
-  // URL endpoint Google Gemini API
+  // URL asli dari Google Gemini API
   const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
   try {
-    // Meneruskan body dari permintaan frontend ke Google API
+    // Ambil payload (prompt) dari body permintaan yang dikirim oleh frontend
+    const payload = JSON.parse(event.body);
+
+    // Lakukan permintaan ke Google API dari sisi server
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: event.body, // Langsung teruskan body dari event
+      body: JSON.stringify(payload),
     });
 
-    // Periksa jika respons dari Google tidak OK
+    // Jika respons dari Google tidak OK, teruskan errornya
     if (!response.ok) {
-        const errorBody = await response.json();
-        console.error('Google API Error:', errorBody);
-        return {
-            statusCode: response.status,
-            body: JSON.stringify(errorBody),
-        };
+      const errorData = await response.json();
+      return {
+        statusCode: response.status,
+        body: JSON.stringify(errorData),
+      };
     }
 
-    // Ambil data JSON dari respons Google
+    // Jika berhasil, ambil data dan kirimkan kembali ke frontend
     const data = await response.json();
 
-    // Kirim kembali respons dari Google ke frontend
     return {
       statusCode: 200,
       headers: {
@@ -48,12 +56,12 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify(data),
     };
+
   } catch (error) {
-    // Tangani kesalahan jaringan atau lainnya
-    console.error('Proxy Error:', error);
+    // Tangani jika ada error jaringan atau parsing JSON
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: { message: `Terjadi kesalahan pada server proxy: ${error.message}` } }),
+      body: JSON.stringify({ error: error.message }),
     };
   }
 };
